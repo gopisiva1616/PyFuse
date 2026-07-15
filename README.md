@@ -1,4 +1,3 @@
-# PyFuse
 
 <p align="center">
   <img src="docs/logo/PyFuse_logo.png" alt="PyFuse logo" width="420">
