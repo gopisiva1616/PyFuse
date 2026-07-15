@@ -10,7 +10,7 @@
 
 /* Runtime font-size scaling controlled by docs/javascripts/font-size.js. */
 :root {
-  --pyfuse-font-scale: 1.4;
+  --pyfuse-font-scale: 1.0;
 }
 
 .wy-nav-content,
@@ -73,7 +73,7 @@
 .rst-content pre,
 .highlight,
 .highlight pre {
-  font-size: calc(20px * var(--pyfuse-font-scale)) !important;
+  font-size: calc(16px * var(--pyfuse-font-scale)) !important;
 }
 
 /* Avoid oversized figures overflowing the content panel. */

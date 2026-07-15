@@ -8,21 +8,7 @@ PyFuse (Python Fusion Annotator) is a command-line tool for annotating gene fusi
 
 ## Full Documentation
 
-Use the MkDocs user manual for complete usage details:
-
-- Documentation site: https://gopisiva1616.github.io/PyFuse/
-- Docs source index: [docs/index.md](docs/index.md)
-
-Recommended reading order:
-
-1. [Description](docs/description.md)
-2. [Installation](docs/installation.md)
-3. [Resource Setup Overview](docs/resources-overview.md)
-4. [Resource Install Options and Examples](docs/resources-install-options.md)
-5. [MANE Usage](docs/mane-transcripts.md)
-6. [Annotator Usage](docs/annotator-usage.md)
-7. [Output Files](docs/outputs.md)
-8. [Annotation Columns](docs/annotation-columns.md)
+Detailed documentation available at [PyFuse documentation](https://gopisiva1616.github.io/PyFuse/).
 
 ## Quick Start
 
