@@ -1,0 +1,30 @@
+## YAML CONFIGURATION FOR PYFUSE
+
+
+##### Defaults  ####
+
+# preprocessing
+gene_filter_padding: 300
+
+
+
+# unittest i/o files
+pytest_input: "input_27cases.txt"
+pytest_input_format: "star"
+pytest_truth_output: "expected_output_27cases.xlsx"
+
+
+# Settings
+igv_link: '=Hyperlink("http://localhost:60151/goto?locus=IGV_ID","IGV_link")'
+genecards_url: 'https://www.genecards.org/cgi-bin/carddisp.pl?gene='
+
+
+#assets for html report
+report_logo: "../../../docs/logo/PyFuse_logo.png"
+
+config_assets:
+  font_regular: Inter-Regular.woff2
+  font_bold: Inter-SemiBold.woff2
+  jquery:  jquery-3.6.0.min.js
+  datatables_js:  jquery.dataTables.min.js
+  datatables_css:  jquery.dataTables.min.css

@@ -1,0 +1,38 @@
+site_name: PyFuse Documentation
+site_description: Bioinformatics user manual for PyFuse
+site_url: https://gopisiva1616.github.io/PyFuse/
+repo_name: pyfuse
+repo_url: https://github.com/gopisiva1616/PyFuse.git
+
+theme:
+  name: readthedocs
+  logo: logo/PyFuse_logo.png
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/font-size.js
+
+nav:
+  - Home: index.md
+  - Description: description.md
+  - Installation: installation.md
+  - Resource Setup:
+      - Overview: resources-overview.md
+      - Install Options and Examples: resources-install-options.md
+      - Selection Behavior: resource-selection.md
+      - MANE Usage: mane-transcripts.md
+  - Running PyFuse:
+      - Annotator Usage: annotator-usage.md
+      - Testing: testing.md
+      - Output Files: outputs.md
+      - Annotation Columns: annotation-columns.md
+  - Publishing and Compliance: publishing-and-compliance.md
+  - Changelog: changelog.md
