@@ -15,7 +15,6 @@ pytest_truth_output: "expected_output_27cases.xlsx"
 
 
 # Settings
-igv_link: '=Hyperlink("http://localhost:60151/goto?locus=IGV_ID","IGV_link")'
 genecards_url: 'https://www.genecards.org/cgi-bin/carddisp.pl?gene='
 
 

@@ -30,9 +30,11 @@ nav:
       - Selection Behavior: resource-selection.md
       - MANE Usage: mane-transcripts.md
   - Running PyFuse:
+      - Setup and Usage: setup-and-usage.md
       - Annotator Usage: annotator-usage.md
       - Testing: testing.md
       - Output Files: outputs.md
+      - Output Columns: output-columns.md
       - Annotation Columns: annotation-columns.md
   - Publishing and Compliance: publishing-and-compliance.md
   - Changelog: changelog.md
