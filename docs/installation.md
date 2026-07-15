@@ -5,13 +5,18 @@
 - Python 3.10+
 - `bedtools` on PATH
 
-## Install from PyPI
+## Quick install from GitHub
+
+We recommend using a virtual environment to avoid dependency conflicts:
 
 ```bash
-pip install pyfuse
+python -m venv .venv
+source .venv/bin/activate
+pip install --upgrade git+https://github.com/gopisiva1616/PyFuse.git
 ```
 
-## Install from Git source
+
+## Developer install from Git source
 
 ```bash
 git clone https://github.com/gopisiva1616/PyFuse.git
@@ -22,9 +27,15 @@ pip install -U pip
 pip install -e .
 ```
 
-## Conda installation
+Note: PyPI and Conda packages are not yet available. The commands below will be updated when the packages are published.
 
-After conda package publication:
+## Install from PyPI
+
+```bash
+pip install pyfuse
+```
+
+## Conda installation
 
 ```bash
 conda install -c conda-forge pyfuse
