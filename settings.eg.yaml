@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # prep_resources URL defaults
 default_refseq_gtf_url_grch37: "https://ftp.ncbi.nlm.nih.gov/refseq/H_sapiens/annotation/GRCh37_latest/refseq_identifiers/GRCh37_latest_genomic.gtf.gz"
 
@@ -9,6 +8,3 @@ default_refseq_gtf_url_grch38: "https://ftp.ncbi.nlm.nih.gov/refseq/H_sapiens/an
 default_refseq_assembly_summary_url_grch38: "https://ftp.ncbi.nlm.nih.gov/refseq/H_sapiens/annotation/GRCh38_latest/refseq_identifiers/GRCh38_latest_assembly_report.txt"
 
 default_mane_url: "https://ftp.ncbi.nlm.nih.gov/refseq/MANE/MANE_human/current/"
-=======
---- {}
->>>>>>> main

@@ -81,10 +81,6 @@ Note: annotator mode does not expose a `--resource-root` option.
 
 ## Settings Template
 
-<<<<<<< HEAD
 Use [settings.eg.yaml](settings.eg.yaml) as a template for custom settings files.
-=======
-Use [settings.eg.yaml](../settings.eg.yaml) as a template for custom settings files.
->>>>>>> main
 
 For complete option-by-option behavior, defaults, and examples, see [resources-install-options.md](resources-install-options.md).
