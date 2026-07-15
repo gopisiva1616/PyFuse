@@ -1,0 +1,46 @@
+## YAML CONFIGURATION FOR PYFUSE
+
+
+##### Defaults  ####
+
+# prep_resources URL defaults
+default_refseq_gtf_url_grch37: "https://ftp.ncbi.nlm.nih.gov/refseq/H_sapiens/annotation/GRCh37_latest/refseq_identifiers/GRCh37_latest_genomic.gtf.gz"
+default_refseq_assembly_summary_url_grch37: "https://ftp.ncbi.nlm.nih.gov/refseq/H_sapiens/annotation/GRCh37_latest/refseq_identifiers/GRCh37_latest_assembly_report.txt"
+default_refseq_gtf_url_grch38: "https://ftp.ncbi.nlm.nih.gov/refseq/H_sapiens/annotation/GRCh38_latest/refseq_identifiers/GRCh38_latest_genomic.gtf.gz"
+default_refseq_assembly_summary_url_grch38: "https://ftp.ncbi.nlm.nih.gov/refseq/H_sapiens/annotation/GRCh38_latest/refseq_identifiers/GRCh38_latest_assembly_report.txt"
+default_mane_url: "https://ftp.ncbi.nlm.nih.gov/refseq/MANE/MANE_human/current/"
+
+# Optional persistent root for managed PyFuse resources.
+# Precedence: CLI --resource-root > PYFUSE_RESOURCE_ROOT env var > this setting > platform default.
+# resource_root: "/path/to/pyfuse_data_root"
+
+
+
+
+# preprocessing
+gene_filter_padding: 300
+
+
+
+
+# unittest i/o files
+pytest_input: "input_27cases.txt"
+pytest_input_format: "star"
+pytest_truth_output: "expected_output_27cases.xlsx"
+
+
+# Settings
+igv_link: '=Hyperlink("http://localhost:60151/goto?locus=IGV_ID","IGV_link")'
+genecards_url: 'https://www.genecards.org/cgi-bin/carddisp.pl?gene='
+ucsc_url: 'https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&position='
+
+
+#assets for html report
+report_logo: "../../../docs/logo/PyFuse_logo.png"
+
+config_assets:
+  font_regular: Inter-Regular.woff2
+  font_bold: Inter-SemiBold.woff2
+  jquery:  jquery-3.6.0.min.js
+  datatables_js:  jquery.dataTables.min.js
+  datatables_css:  jquery.dataTables.min.css

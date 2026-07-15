@@ -1,0 +1,80 @@
+
+[project]
+name = "pyfuse"
+dynamic = ["version"]
+description = "PyFuse: annotate gene fusion breakpoints with exon, frame, MANE, sequence, and report outputs."
+requires-python = ">=3.10.0"
+readme = "README.md"
+license = {file = "LICENSE.md"}
+keywords = ["bioinformatics", "gene-fusion", "genomics", "annotation"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Topic :: Scientific/Engineering :: Bio-Informatics",
+  "Operating System :: OS Independent"
+]
+dependencies = [
+  "pandas>=3.0.3,<4",
+  "pivottablejs>=0.9.0,<1",
+  "IPython>=9.15.0,<11",
+  "pyyaml>=6.0.3,<7",
+  "pybedtools>=0.12.0,<1",
+  "pysam>=0.24.0,<1",
+  "jinja2>=3.1.6,<4",
+  "progressbar>=2.5,<3",
+  "tqdm>=4.68.4,<5",
+  "biopython>=1.87,<2",
+  "validators>=0.35,<1",
+  "openpyxl>=3.1.5,<4",
+  "swifter>=1.4,<2",
+  "pyfaidx>=0.9.0.4,<1"
+]
+
+[project.optional-dependencies]
+dev = [
+  "build>=1.5.1",
+  "twine>=6.2.0",
+  "pytest>=9.1.1",
+  "pytest-html>=4.2.0"
+]
+docs = [
+  "mkdocs>=1.6,<2",
+  "mkdocs-material>=9.5,<10"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.scripts]
+pyfuse = "pyfuse.cli:main"
+pyfuse-test = "pyfuse.test_cli:main"
+
+[project.urls]
+Homepage = "https://github.com/gopisiva1616/PyFuse.git"
+Repository = "https://github.com/gopisiva1616/PyFuse.git"
+
+[build-system]
+requires = ["setuptools>=68", "wheel>=0.43"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+include-package-data = true
+
+[tool.setuptools.dynamic]
+version = {attr = "pyfuse.__version__"}
+
+[tool.setuptools.package-data]
+pyfuse = [
+  "resources/**/*",
+  "config/**/*",
+]
+
+[tool.pytest.ini_options]
+markers = [
+  "integration: marks tests that require prepared resource bundles",
+]

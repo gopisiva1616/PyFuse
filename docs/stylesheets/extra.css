@@ -1,0 +1,93 @@
+/* Wider content area for long bioinformatics tables/figures. */
+.wy-nav-content {
+  max-width: 1500px;
+}
+
+/* Keep full menu tree visible in the left nav by default. */
+.wy-menu-vertical ul {
+  display: block !important;
+}
+
+/* Runtime font-size scaling controlled by docs/javascripts/font-size.js. */
+:root {
+  --pyfuse-font-scale: 1.4;
+}
+
+.wy-nav-content,
+.wy-menu-vertical,
+.wy-breadcrumbs,
+.rst-content {
+  font-size: calc(18px * var(--pyfuse-font-scale));
+}
+
+/* Slightly reduce heading sizes relative to body text. */
+.rst-content h1 {
+  font-size: 1.55em;
+}
+
+.rst-content h2 {
+  font-size: 1.33em;
+}
+
+.rst-content h3 {
+  font-size: 1.17em;
+}
+
+.rst-content h4,
+.rst-content h5,
+.rst-content h6 {
+  font-size: 1.04em;
+}
+
+/* Floating font-size controls. */
+.pyfuse-font-controls {
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  gap: 8px;
+  padding: 8px 10px;
+  position: fixed;
+  right: 16px;
+  z-index: 1000;
+}
+
+.pyfuse-font-controls button {
+  background: #f6f8fa;
+  border: 1px solid #c9d1d9;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1em;
+  padding: 2px 8px;
+}
+
+.pyfuse-font-controls button:hover {
+  background: #eaeef2;
+}
+
+/* Increase font size for code blocks and inline code. */
+.rst-content code,
+.rst-content pre,
+.highlight,
+.highlight pre {
+  font-size: calc(20px * var(--pyfuse-font-scale)) !important;
+}
+
+/* Avoid oversized figures overflowing the content panel. */
+.wy-nav-content img {
+  height: auto;
+  max-width: 100%;
+}
+
+/* Keep the docs logo compact and rectangular in the readthedocs sidebar. */
+.wy-side-nav-search > a img.logo,
+.wy-side-nav-search .wy-dropdown > a img.logo {
+  display: block;
+  height: auto;
+  margin: 0 auto 6px;
+  max-width: 195px;
+  width: 100%;
+}

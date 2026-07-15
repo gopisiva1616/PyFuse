@@ -1,0 +1,53 @@
+{% set name = "pyfuse" %}
+{% set version = "0.1.0rc1" %}
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  path: ..
+
+build:
+  noarch: python
+  number: 0
+  script: {{ PYTHON }} -m pip install . -vv
+
+requirements:
+  host:
+    - python >=3.10
+    - pip
+    - setuptools >=68
+    - wheel >=0.43
+  run:
+    - python >=3.10
+    - bedtools
+    - pandas >=3.0.3,<4
+    - pivottablejs >=0.9.0,<1
+    - ipython >=9.15.0,<11
+    - pyyaml >=6.0.3,<7
+    - pybedtools >=0.12.0,<1
+    - pysam >=0.24.0,<1
+    - jinja2 >=3.1.6,<4
+    - progressbar >=2.5,<3
+    - tqdm >=4.68.4,<5
+    - biopython >=1.87,<2
+    - validators >=0.35,<1
+    - openpyxl >=3.1.5,<4
+    - swifter >=1.4,<2
+    - pyfaidx >=0.9.0.4,<1
+
+test:
+  commands:
+    - pyfuse -h
+
+about:
+  home: https://github.com/gopisiva1616/PyFuse.git
+  summary: PyFuse: Python Fusion Annotator
+  license: GPL-3.0-only
+  license_file:
+    - ../LICENSE.md
+    - ../THIRD_PARTY_NOTICES.md
+
+extra:
+  recipe-maintainers:
+    - pyfuse-maintainers
