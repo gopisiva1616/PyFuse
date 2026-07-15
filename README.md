@@ -18,7 +18,17 @@ pyfuse annotator -i /path/to/fusions.tsv -o /path/to/output --input_format star 
 ```
 
 ## Installation
-From Git (latest source)
+Quick install from GitHub (latest source)
+
+We recommend using a virtual environment to avoid dependency conflicts:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install --upgrade git+https://github.com/gopisiva1616/PyFuse.git
+```
+
+Developer install from a local clone
 
 ```bash
 git clone https://github.com/gopisiva1616/PyFuse.git
@@ -29,7 +39,9 @@ pip install -U pip
 pip install -e .
 ```
 
-From PyPI:
+Note: PyPI and Conda packages are not yet available. The commands below will be updated when the packages are published.
+
+Install from PyPI
 
 ```bash
 pip install pyfuse

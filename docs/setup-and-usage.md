@@ -16,8 +16,12 @@ pyfuse resources install --help
 ## Install package
 
 ```bash
-pip install pyfuse
+python -m venv .venv
+source .venv/bin/activate
+pip install --upgrade git+https://github.com/gopisiva1616/PyFuse.git
 ```
+
+Note: PyPI and Conda packages are not yet available. See the project documentation for updated package-manager install commands when they are published.
 
 ## Resource setup is required
 
