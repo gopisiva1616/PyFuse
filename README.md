@@ -1,13 +1,14 @@
 
+
 <p align="center">
-  <img src="docs/logo/PyFuse_logo.png" alt="PyFuse logo" width="420">
+  <img src="docs/logo/PyFuse_logo.png" alt="PyFuse logo" width="350" height="130">
 </p>
 
 PyFuse (Python Fusion Annotator) is a command-line tool for annotating gene fusion breakpoints with exon context, frame status, optional sequence context, and report outputs (Excel, HTML, VCF).
 
 ## Full Documentation
 
-Detailed documentation available at [PyFuse documentation](https://gopisiva1616.github.io/PyFuse/).
+Detailed documentation available at [PyFuse-Documentation](https://gopisiva1616.github.io/PyFuse/).
 
 ## Quick Start
 
