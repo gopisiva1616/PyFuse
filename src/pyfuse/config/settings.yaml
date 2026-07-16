@@ -35,7 +35,7 @@ ucsc_url: 'https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&position='
 
 
 #assets for html report
-report_logo: "../../../docs/logo/PyFuse_logo.png"
+report_logo: "PyFuse_logo.png"
 
 config_assets:
   font_regular: Inter-Regular.woff2
