@@ -16,6 +16,7 @@ from pyfuse.annotators import add_getex_cosmic_annotation as cos_gtex
 from pyfuse.annotators import fusion_frame_status as frame_calc
 from pyfuse.annotators import fusion_sequence as fus_seq
 from pyfuse.annotators import add_black_list_genes as bl_list
+from pyfuse.annotators.fusion_plot_links import add_fusion_plot_links
 from pyfuse.annotators.fusion2vcf import fusion_df_to_bnd_vcf
 from openpyxl.utils import get_column_letter
 
@@ -62,12 +63,13 @@ class RunPyfuse():
         write final annotated DF and generates output files
     """
 
-    def __init__(self, input_bkpt, target_df, format, ref=None, genome=None):
+    def __init__(self, input_bkpt, target_df, format, ref=None, genome=None, fusion_plot_mode="external"):
         self.fusion_bkpt = input_bkpt
         self.target_df = target_df
         self.format = format
         self.ref = ref
         self.genome = self._display_genome(genome)
+        self.fusion_plot_mode = fusion_plot_mode
 
         #print(f'SET OUTPUT PATH in PYFUSE: {utils.out_path}')
 
@@ -208,6 +210,11 @@ class RunPyfuse():
             logger.error(f'Failed to write VCF: {e}')
 
         final_df = output_df.copy()
+        final_df, embedded_fusion_plots = add_fusion_plot_links(
+            final_df,
+            utils.out_path,
+            mode=self.fusion_plot_mode,
+        )
         final_df["5'-3'Gene_Partners"] = final_df["5'-3'Gene_Partners"].apply(lambda x: utils.gene_pair_to_html_links(x))
         for coord_col in ["5'co-ordinate", "3'co-ordinate"]:
             if coord_col in final_df.columns:
@@ -216,7 +223,12 @@ class RunPyfuse():
             if exon_col in final_df.columns:
                 final_df[exon_col] = final_df[exon_col].apply(lambda x: utils.exon_annotation_to_refseq_link(x))
 
-        write_df2html(final_df, html, title="PyFuse Gene Fusion Annotations")
+        write_df2html(
+            final_df,
+            html,
+            title="PyFuse Gene Fusion Annotations",
+            embedded_fusion_plots=embedded_fusion_plots,
+        )
 
 
         logger.info(f'output1 -- {html}')

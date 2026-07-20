@@ -1,7 +1,7 @@
 import logging
 from datetime import datetime
 
-__version__ = "0.1.0rc1"
+__version__ = "v0.2.0rc1"
 class ConsoleFilter(logging.Filter):
     def filter(self, record: logging.LogRecord) -> bool:
         # default: show on console

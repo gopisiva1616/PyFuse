@@ -34,6 +34,7 @@ This command uses the latest installed managed bundle for GRCh37 unless `--resou
 - `-g, --reference`: FASTA reference for fusion nucleotide/peptide sequence
 - `-t, --target_bed`: BED filter for target regions
 - `-s, --settings`: custom settings YAML
+- `--fusion-plot-mode`: keep the default `external` mode for lighter reports, or use `embed` if you need the fusion visualization bundled into one HTML file
 - `-d`: debug logging
 
 ## Resource resolution behavior
@@ -108,3 +109,9 @@ pyfuse -s /data/settings.custom.yaml annotator \
   --genome grch38 \
   --resource_path /data/resources/override_bundle
 ```
+
+### Fusion plot output mode
+
+By default, PyFuse writes the fusion visualization as separate HTML files linked from the main report. This keeps the report smaller and avoids lag when you have many fusions.
+
+If you need a single self-contained HTML report, set `--fusion-plot-mode embed`.

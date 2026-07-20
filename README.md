@@ -41,13 +41,13 @@ pip install -e .
 
 Note: PyPI and Conda packages are not yet available. The commands below will be updated when the packages are published.
 
-Install from PyPI
+#### Install from PyPI
 
 ```bash
 pip install pyfuse
 ```
 
-### Conda 
+#### Conda install
 
 ```bash
 conda install -c conda-forge pyfuse
@@ -55,7 +55,7 @@ conda install -c conda-forge pyfuse
 
 ## Requirements
 
-- Python 3.10+
+- Python >=3.10.0
 - `bedtools` available on PATH (required by `pybedtools` workflows)
 
 ## CLI overview

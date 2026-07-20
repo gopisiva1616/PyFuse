@@ -18,3 +18,4 @@ In the HTML report:
 - gene partners are hyperlinked to GeneCards
 - coordinates/transcripts are hyperlinked to UCSC and RefSeq locations
 - DataTables controls support filtering and search
+- fusion plots are linked as separate HTML files by default; use `--fusion-plot-mode embed` only when you want one self-contained HTML report and the file size is acceptable

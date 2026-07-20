@@ -1,8 +1,8 @@
 cff-version: 1.2.0
 message: "If you use PyFuse, please cite this software."
 title: "PyFuse: Python Fusion Annotator"
-version: "0.1.0rc1"
-date-released: "2026-07-14"
+version: "v0.2.0rc1"
+date-released: "2026-07-20"
 type: software
 license: GPL-3.0-only
 authors:

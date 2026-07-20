@@ -1,0 +1,19 @@
+## VCF Header Template for Fusion BND VCF Output
+##fileformat=VCFv4.5
+##source=PyFuse
+##INFO=<ID=MATEID,Number=1,Type=String,Description="ID of mate breakend">
+##INFO=<ID=SVTYPE,Number=1,Type=String,Description="Type of structural variant">
+##INFO=<ID=EVTYPE,Number=1,Type=String,Description="Event type (e.g., Fusion)">
+##INFO=<ID=GENE,Number=1,Type=String,Description="Gene fusion partners">
+##INFO=<ID=FSN_LOC,Number=1,Type=String,Description="Fusion location annotation">
+##INFO=<ID=FRM_STAT,Number=1,Type=String,Description="Frame status">
+##INFO=<ID=TRANSCRIPT,Number=1,Type=String,Description="Transcript(s) involved">
+##INFO=<ID=FSN_ANNOT,Number=1,Type=String,Description="Fusion annotation">
+##INFO=<ID=MATEGENE,Number=1,Type=String,Description="Mate gene">
+##INFO=<ID=HISTOLOGY,Number=1,Type=String,Description="Histology type">
+##INFO=<ID=PRESENT_IN_COSMIC,Number=1,Type=String,Description="Present in COSMIC">
+##INFO=<ID=PRESENT_IN_GTEX,Number=1,Type=String,Description="Present in GTEX">
+##INFO=<ID=AVERAGE_EXPRESSION,Number=1,Type=String,Description="Average expression">
+##INFO=<ID=NUMBER_OF_TISSUES,Number=1,Type=String,Description="Number of tissues with fusion">
+##INFO=<ID=FUSION_ID,Number=1,Type=String,Description="FUSION_ID">
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO

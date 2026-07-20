@@ -363,6 +363,12 @@ def main():
                             type=(os.path.abspath),
                             default=None,
                             help='reference genome in .fasta format for fusion sequence annotation')
+    annotator_parser.add_argument(
+                            '--fusion-plot-mode',
+                            dest='fusion_plot_mode',
+                            choices=['embed', 'external'],
+                            default='external',
+                            help='how fusion visualizations are stored in report output (default: external; use embed for one self-contained HTML report)')
 
 
     # subparser to manage local resource cache
@@ -563,7 +569,7 @@ def main():
             target_df.columns = ['chr', 'start', 'end']
 
         pyfuse_obj = RunPyfuse(input_bkpt_file, target_df,
-                           args.format, ref=args.ref, genome=args.genome)
+                           args.format, ref=args.ref, genome=args.genome, fusion_plot_mode=args.fusion_plot_mode)
         pyfuse_obj.run_pipeline()
 
     etime = time.time()
