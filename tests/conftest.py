@@ -1,4 +1,5 @@
 import os
+import sys
 from datetime import datetime
 from pathlib import Path
 
@@ -15,6 +16,10 @@ for _var in (
     "BLIS_NUM_THREADS",
 ):
     os.environ.setdefault(_var, "1")
+
+SRC_DIR = Path(__file__).resolve().parents[1] / "src"
+if str(SRC_DIR) not in sys.path:
+    sys.path.insert(0, str(SRC_DIR))
 
 from pyfuse.utils.common_utils import config, utils
 from pyfuse.utils.resource_manger import ResourceManager

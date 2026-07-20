@@ -16,6 +16,7 @@ from pathlib import Path
 
 from urllib.parse import urlparse, urljoin
 from pyfuse.utils.common_utils import utils
+from pyfuse.prep_resources.build_gene_feature_table import write_gene_feature_table
 tqdm.pandas()
 
 config = utils.get_config_vars()
@@ -24,6 +25,7 @@ resource_files_dict = {
     "exon_regions": "genes_by_location.tsv.gz",
     "all_gene_exons": "all_genes_exons_transcripts.bed.gz",
     "start_codon_file": "start_codons.txt.gz",
+    "gene_feature_table": "gene_feature_table.tsv.gz",
 }
 
 DEFAULT_GTF_URL_GRCH37 = config['default_refseq_gtf_url_grch37']
@@ -374,9 +376,31 @@ def main(args):
     logger.info("Reading GTF annotations")
     raw_refseq_df = pd.read_csv(gtf_file, sep="\t", comment='#',
                                 usecols=[0, 2, 3, 4, 6, 8], header=None)
-    raw_refseq_df = raw_refseq_df[raw_refseq_df.iloc[:, 1].isin(['exon', 'transcript', 'start_codon'])]
+
+    def normalize_region_token(value):
+        token = str(value).strip().lower().replace('-', '_').replace(' ', '_')
+        if token in {'5utr', '5_utr', 'fiveprimeutr', 'fiveprime_utr', 'utr5'}:
+            return 'five_prime_utr'
+        if token in {'3utr', '3_utr', 'threeprimeutr', 'threeprime_utr', 'utr3'}:
+            return 'three_prime_utr'
+        if token in {'utr', 'untranslated_region'}:
+            return 'utr'
+        return token
+
+    allowed_regions = {
+        'exon',
+        'transcript',
+        'cds',
+        'start_codon',
+        'stop_codon',
+        'five_prime_utr',
+        'three_prime_utr',
+        'utr',
+    }
+    raw_refseq_df.iloc[:, 1] = raw_refseq_df.iloc[:, 1].map(normalize_region_token)
+    raw_refseq_df = raw_refseq_df[raw_refseq_df.iloc[:, 1].isin(allowed_regions)]
     raw_refseq_df.reset_index(drop=True, inplace=True)
-    logger.info("Retained %s rows after selecting exons, transcripts, and start codons", len(raw_refseq_df))
+    logger.info("Retained %s rows after selecting exons, transcripts, CDS/UTRs, start codons, and stop codons", len(raw_refseq_df))
 
     # Process each annotation and extract the required columns and merge to main df
     def process_column(df, column):
@@ -607,6 +631,16 @@ def main(args):
     
     write_table(genes_by_loc_df, out_dir=out_path, filename=resource_files_dict['exon_regions'],
                 sep="\t", index=False)
+
+    ####################################################
+    #   gene_feature_table.tsv.gz
+    ####################################################
+    logger.info("Writing gene feature table resource for fusion visualization")
+    write_gene_feature_table(
+        final_df,
+        out_dir=out_path,
+        filename=resource_files_dict["gene_feature_table"],
+    )
 
     mane_enabled = False
     mane_input = args.mane_file or DEFAULT_MANE_URL

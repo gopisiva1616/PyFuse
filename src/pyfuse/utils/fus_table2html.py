@@ -1,4 +1,5 @@
 import base64
+import json
 import re
 from pathlib import Path
 from importlib.resources import files
@@ -19,6 +20,10 @@ def _encode_file_as_data_url(path: str, mime_type: str) -> str:
 
 def _safe_inline_js(js_text: str) -> str:
     return re.sub(r"</script", r"<\\/script", js_text, flags=re.IGNORECASE)
+
+
+def _safe_inline_json(json_text: str) -> str:
+    return json_text.replace("</", "<\\/")
 
 
 def _resolve_report_logo_path() -> str | None:
@@ -52,7 +57,14 @@ def _apply_frame_status_styling(df: pd.DataFrame) -> list:
                         row[frame_col_idx] = f'<span class="cell-out-of-frame">{val}</span>'
     return data
 
-def write_df2html(df: pd.DataFrame, output_html: str, title: str):
+def write_df2html(
+    df: pd.DataFrame,
+    output_html: str,
+    title: str,
+    embedded_fusion_plots: dict[str, str] | None = None,
+):
+
+    embedded_fusion_plots = embedded_fusion_plots or {}
 
     logo_path = _resolve_report_logo_path()
 
@@ -63,6 +75,7 @@ def write_df2html(df: pd.DataFrame, output_html: str, title: str):
         "datatables_js_text": _safe_inline_js(_read_text_asset(config["datatables_js"])),
         "datatables_css_text": _read_text_asset(config["datatables_css"]),
         "report_logo_data": _encode_file_as_data_url(logo_path, "image/png") if logo_path else None,
+        "embedded_fusion_plots_json": _safe_inline_json(json.dumps(embedded_fusion_plots)),
     }
 
     env = Environment(autoescape=False)
@@ -199,6 +212,31 @@ def write_df2html(df: pd.DataFrame, output_html: str, title: str):
         <script>{{ jquery_js_text }}</script>
         <script>{{ datatables_js_text }}</script>
         <script>
+            const embeddedFusionPlots = {{ embedded_fusion_plots_json }};
+
+            function decodeBase64Utf8(encoded) {
+                const binary = window.atob(encoded);
+                const bytes = Uint8Array.from(binary, (ch) => ch.charCodeAt(0));
+                return new TextDecoder('utf-8').decode(bytes);
+            }
+
+            function openEmbeddedFusionPlot(plotKey) {
+                const encoded = embeddedFusionPlots[plotKey];
+                if (!encoded) {
+                    return false;
+                }
+
+                const popup = window.open('', '_blank');
+                if (!popup) {
+                    return false;
+                }
+
+                popup.document.open();
+                popup.document.write(decodeBase64Utf8(encoded));
+                popup.document.close();
+                return false;
+            }
+
             $(document).ready(function () {
                 var table = $('#data-table').DataTable({
                     orderCellsTop: true,

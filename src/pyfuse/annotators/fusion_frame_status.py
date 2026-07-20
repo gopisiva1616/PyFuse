@@ -87,7 +87,7 @@ def get_frame_status(frame_5p, frame_3p):
     elif frame_5p in utr_scd_na and frame_3p == 'NA':
         frame_status = "5UTR-INTRON"
 
-    elif frame_5p in frame_5p == 'NA' and frame_3p == 'NA':
+    elif frame_5p == 'NA' and frame_3p == 'NA':
         frame_status = "INTRON-INTRON"
     else:
         frame_status = "UNK"
